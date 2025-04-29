@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+    <title>{{ plant[1] }} • Plants & Pots</title>
+    <style>
+      body { margin: 0; font-family: Arial, sans-serif; }
+      .detail {
+        max-width: 600px;
+        margin: 2rem auto;
+        background: rgba(255,255,255,0.9);
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .detail img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+      }
+      .detail h2 { margin-top: 0; color: #2E8B57; }
+      .detail p { margin: 0.5rem 0; color: #333; }
+      .detail .price { font-weight: bold; color: #2E8B57; }
+      .btn {
+        display: inline-block;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        margin-top: 1rem;
+      }
+      .btn-primary { background: #2E8B57; color: white; }
+      .btn-secondary { background: #ccc; color: #666; }
+      form input[type="number"] {
+        width: 60px;
+        padding: 0.25rem;
+        margin: 0 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="detail">
+      <img src="{{ plant[4] }}" alt="{{ plant[1] }}">
+      <h2>{{ plant[1] }}</h2>
+      <p>{{ plant[2] }}</p>
+      <p class="price">Price: ${{ plant[3] }}</p>
+
+      {% if plant[5] > 0 %}
+        <p><strong>In stock:</strong> {{ plant[5] }}</p>
+
+        <form action="{{ url_for('add_to_cart') }}" method="post">
+          <input type="hidden" name="plant_id" value="{{ plant[0] }}">
+          Quantity:
+          <input type="number" name="qty" value="1" min="1" max="{{ plant[5] }}">
+          <button type="submit" class="btn btn-primary">Add to Cart</button>
+        </form>
+
+      {% else %}
+        <button class="btn btn-secondary" disabled>Out of Stock</button>
+      {% endif %}
+
+      <p style="margin-top:1rem;">
+        <a href="{{ url_for('plants') }}">← Back to Catalog</a>
+      </p>
+    </div>
+  </body>
+</html>

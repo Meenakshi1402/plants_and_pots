@@ -1,0 +1,56 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.bg {
+    background: url('../images/welcome-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+
+    /* Make it fill the viewport: */
+    min-height: 100vh;
+
+    /* Flex-center your content: */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    text-shadow: 0 0 8px rgba(0,0,0,0.7);
+}
+
+/* Main title */
+.bg h1 {
+    font-size: 4rem;       /* ~64px if base is 16px */
+    margin: 0.5rem 0;
+}
+
+/* Tagline */
+.bg .tagline {
+    font-size: 1.5rem;     /* ~24px */
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+/* Button styles */
+.buttons .btn {
+    font-size: 1.1rem;     /* ~18px */
+    padding: 14px 28px;    /* larger click area */
+    margin: 0 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: #2E8B57;
+    color: #fff;
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.85);
+    color: #2E8B57;
+}
